@@ -906,9 +906,9 @@ pub enum WindowFrameBound {
     /// `CURRENT ROW`
     CurrentRow,
     /// `<N> PRECEDING` or `UNBOUNDED PRECEDING`
-    Preceding(Option<Expr>),
+    Preceding(Option<Box<Expr>>),
     /// `<N> FOLLOWING` or `UNBOUNDED FOLLOWING`.
-    Following(Option<Expr>),
+    Following(Option<Box<Expr>>),
 }
 
 impl fmt::Display for WindowFrameBound {
@@ -2687,7 +2687,7 @@ impl fmt::Display for CloseCursor {
 pub struct Function {
     pub name: ObjectName,
     pub args: Vec<FunctionArg>,
-    pub over: Option<Box<WindowSpec>>,
+    pub over: Option<WindowSpec>,
     // aggregate functions may specify eg `COUNT(DISTINCT x)`
     pub distinct: bool,
     // Some functions must be called without trailing parentheses, for example Postgres
