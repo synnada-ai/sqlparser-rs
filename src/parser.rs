@@ -624,6 +624,7 @@ impl<'a> Parser<'a> {
             None
         };
 
+        let over = over.map(Box::new);
         Ok(Expr::Function(Function {
             name,
             args,
@@ -685,7 +686,11 @@ impl<'a> Parser<'a> {
             let rows = if self.parse_keyword(Keyword::UNBOUNDED) {
                 None
             } else {
-                Some(self.parse_literal_uint()?)
+                let parsed_expr = match self.peek_token() {
+                    Token::SingleQuotedString(_) => self.parse_interval(),
+                    _ => self.parse_expr(),
+                };
+                Some(parsed_expr?)
             };
             if self.parse_keyword(Keyword::PRECEDING) {
                 Ok(WindowFrameBound::Preceding(rows))
