@@ -1729,6 +1729,7 @@ fn parse_select_qualify() {
                 }),
                 distinct: false,
                 special: false,
+                order_by: vec![],
             })),
             op: BinaryOperator::Eq,
             right: Box::new(Expr::Value(number("1"))),
