@@ -214,7 +214,6 @@ fn parse_update_set_from() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 joins: vec![],
             },
@@ -241,7 +240,6 @@ fn parse_update_set_from() {
                                     alias: None,
                                     args: None,
                                     with_hints: vec![],
-                                    version: None,
                                 },
                                 joins: vec![],
                             }],
@@ -307,7 +305,6 @@ fn parse_update_with_table_alias() {
                         }),
                         args: None,
                         with_hints: vec![],
-                        version: None,
                     },
                     joins: vec![],
                 },
@@ -370,7 +367,6 @@ fn parse_select_with_table_alias() {
                 }),
                 args: None,
                 with_hints: vec![],
-                version: None,
             },
             joins: vec![],
         }]
@@ -401,7 +397,6 @@ fn parse_delete_statement() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 from[0].relation
             );
@@ -429,7 +424,6 @@ fn parse_delete_statement_for_multi_tables() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 from[0].relation
             );
@@ -439,7 +433,6 @@ fn parse_delete_statement_for_multi_tables() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 from[0].joins[0].relation
             );
@@ -463,7 +456,6 @@ fn parse_delete_statement_for_multi_tables_with_using() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 from[0].relation
             );
@@ -473,7 +465,6 @@ fn parse_delete_statement_for_multi_tables_with_using() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 from[1].relation
             );
@@ -483,7 +474,6 @@ fn parse_delete_statement_for_multi_tables_with_using() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 using[0].relation
             );
@@ -493,7 +483,6 @@ fn parse_delete_statement_for_multi_tables_with_using() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 using[0].joins[0].relation
             );
@@ -521,7 +510,6 @@ fn parse_where_delete_statement() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 from[0].relation,
             );
@@ -563,7 +551,6 @@ fn parse_where_delete_with_alias_statement() {
                     }),
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 from[0].relation,
             );
@@ -577,7 +564,6 @@ fn parse_where_delete_with_alias_statement() {
                         }),
                         args: None,
                         with_hints: vec![],
-                        version: None,
                     },
                     joins: vec![],
                 }]),
@@ -3592,7 +3578,6 @@ fn test_parse_named_window() {
                 alias: None,
                 args: None,
                 with_hints: vec![],
-                version: None,
             },
             joins: vec![],
         }],
@@ -3931,7 +3916,6 @@ fn parse_interval_and_or_xor() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 joins: vec![],
             }],
@@ -4536,7 +4520,6 @@ fn parse_implicit_join() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 joins: vec![],
             },
@@ -4546,7 +4529,6 @@ fn parse_implicit_join() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 joins: vec![],
             },
@@ -4564,7 +4546,6 @@ fn parse_implicit_join() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 joins: vec![Join {
                     relation: TableFactor::Table {
@@ -4572,7 +4553,6 @@ fn parse_implicit_join() {
                         alias: None,
                         args: None,
                         with_hints: vec![],
-                        version: None,
                     },
                     join_operator: JoinOperator::Inner(JoinConstraint::Natural),
                 }],
@@ -4583,7 +4563,6 @@ fn parse_implicit_join() {
                     alias: None,
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 },
                 joins: vec![Join {
                     relation: TableFactor::Table {
@@ -4591,7 +4570,6 @@ fn parse_implicit_join() {
                         alias: None,
                         args: None,
                         with_hints: vec![],
-                        version: None,
                     },
                     join_operator: JoinOperator::Inner(JoinConstraint::Natural),
                 }],
@@ -4612,7 +4590,6 @@ fn parse_cross_join() {
                 alias: None,
                 args: None,
                 with_hints: vec![],
-                version: None,
             },
             join_operator: JoinOperator::CrossJoin,
         },
@@ -4633,7 +4610,6 @@ fn parse_joins_on() {
                 alias,
                 args: None,
                 with_hints: vec![],
-                version: None,
             },
             join_operator: f(JoinConstraint::On(Expr::BinaryOp {
                 left: Box::new(Expr::Identifier("c1".into())),
@@ -4703,7 +4679,6 @@ fn parse_joins_using() {
                 alias,
                 args: None,
                 with_hints: vec![],
-                version: None,
             },
             join_operator: f(JoinConstraint::Using(vec!["c1".into()])),
         }
@@ -4765,7 +4740,6 @@ fn parse_natural_join() {
                 alias,
                 args: None,
                 with_hints: vec![],
-                version: None,
             },
             join_operator: f(JoinConstraint::Natural),
         }
@@ -5030,7 +5004,6 @@ fn parse_derived_tables() {
                         alias: None,
                         args: None,
                         with_hints: vec![],
-                        version: None,
                     },
                     join_operator: JoinOperator::Inner(JoinConstraint::Natural),
                 }],
@@ -6358,7 +6331,6 @@ fn parse_merge() {
                     }),
                     args: None,
                     with_hints: vec![],
-                    version: None,
                 }
             );
             assert_eq!(table, table_no_into);
@@ -6382,7 +6354,6 @@ fn parse_merge() {
                                     alias: None,
                                     args: None,
                                     with_hints: vec![],
-                                    version: None,
                                 },
                                 joins: vec![],
                             }],
